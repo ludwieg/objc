@@ -32,12 +32,20 @@
 }
 
 + (BOOL)encodeTo:(NSMutableData *)buf using:(LUDSerializationCandidate *)candidate withError:(NSError *__autoreleasing  _Nonnull *)error {
-    if(candidate.writeType) {
-        uint8_t byte[1] = {[candidate.meta byte]};
-        [buf appendBytes:byte length:1];
-    }
-    // Here we might coerce and such.
     LUDType *type = candidate.value;
+    BOOL isEmpty = type == nil || ([type isKindOfClass:[NSArray class]] && ((NSArray *)type).count == 0);
+
+    if(candidate.writeType) {
+        candidate.meta.isEmpty = isEmpty;
+        [buf writeUint8:[candidate.meta byte]];
+    }
+
+    if(isEmpty) {
+        return NO;
+    }
+
+    // Here we might coerce and such.
+
     if(![type isKindOfClass:[LUDType class]] && candidate.annotation.type == LUDProtocolTypeStruct) {
         type = [[LUDTypeStruct alloc] init];
         [type setValue:candidate.value forKey:@"value"];

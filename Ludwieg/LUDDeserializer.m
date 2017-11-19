@@ -13,6 +13,7 @@
 #import "LUDTypeAnnotation.h"
 #import "LUDTypeSelector.h"
 #import "LUDSerializable.h"
+#import "LUDSerializablePackage.h"
 #import "Types.h"
 
 #import "NSData+Extensions.h"
@@ -82,11 +83,16 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
     return NO;
 }
 
-
-+ (void)registerPackage:(Class)klass withIdentifier:(uint8_t)identifier {
++ (void)registerPackages:(Class)firstClass, ... {
     allocRegistry();
-    RegisteredPackage pkg = {klass,identifier};
-    registerPackage(pkg);
+    va_list args;
+    va_start(args, firstClass);
+    Class klass = firstClass;
+    do {
+        RegisteredPackage pkg = {klass, [((id<LUDSerializablePackage>)klass) ludwiegID]};
+        registerPackage(pkg);
+    } while((klass = va_arg(args,id)));
+    va_end(args);
 }
 
 + (instancetype)deserializer {

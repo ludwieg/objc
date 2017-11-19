@@ -12,7 +12,9 @@
 @implementation NSMutableData (Extensions)
 
 - (void)writeLudwiegSize:(uint64_t)val {
-    if(val <= UINT8_MAX) {
+    if(val == 0) {
+        [self writeUint8:LUDLengthEncoding0];
+    } else if(val <= UINT8_MAX) {
         [self writeUint8:LUDLengthEncoding8];
         [self writeUint8:val];
     } else if (val <= UINT16_MAX) {

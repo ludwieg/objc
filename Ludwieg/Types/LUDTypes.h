@@ -59,6 +59,7 @@ static const uint8_t LUDKnownTypes[LUDKnownTypesLength] = {
 };
 
 typedef NS_ENUM(uint8_t, LUDLengthEncoding) {
+    LUDLengthEncoding0 = 0x00,
     LUDLengthEncoding8 = 0x01,
     LUDLengthEncoding16 = 0x02,
     LUDLengthEncoding32 = 0x03,

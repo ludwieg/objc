@@ -51,6 +51,7 @@
     LUDLengthEncoding b = [self readUint8WithOffset:offset];
 
     switch(b) {
+        case LUDLengthEncoding0:    return 0;
         case LUDLengthEncoding8:    return [self readUint8WithOffset:offset];
         case LUDLengthEncoding16:   return [self readUint16WithOffset:offset];
         case LUDLengthEncoding32:   return [self readUint32WithOffset:offset];

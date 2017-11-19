@@ -203,19 +203,24 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
             [tmpBuffer writeUint8:byte];
             readBytes++;
             if(tmpBuffer.length == self->packageSize) {
-                RegisteredPackage p;
-                if(!lookupPackage(rawPackageType, &p)) {
-                    [self reset];
-                    return NO;
-                }
-                if ([self deserializeInto:target usingClass:p.klass]) {
-                    return NO;
-                }
-                return YES;
+                return [self handleDeserializationWithTarget:target];
             }
         }
     }
     return NO;
+}
+
+- (BOOL)handleDeserializationWithTarget:(id  _Nullable __autoreleasing *)target {
+    RegisteredPackage p;
+    if(!lookupPackage(rawPackageType, &p)) {
+        [self reset];
+        return NO;
+    }
+    if ([self deserializeInto:target usingClass:p.klass]) {
+        return NO;
+    }
+    [self reset];
+    return YES;
 }
 
 - (BOOL)deserializeInto:(id __nullable __autoreleasing *)target usingClass:(Class)klass {

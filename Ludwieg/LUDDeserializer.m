@@ -152,11 +152,14 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
             break;
         }
         case deserializerStatusPackageSizePrelude: {
-            if(byte < LUDLengthEncoding8 || byte > LUDLengthEncoding64) {
+            if(byte > LUDLengthEncoding64) {
                 [self reset];
                 break;
             }
             switch ((LUDLengthEncoding)byte) {
+                case LUDLengthEncoding0:
+                    return [self handleDeserializationWithTarget:target];
+                    break;
                 case LUDLengthEncoding8:
                     self->messageSizeBytes = 1;
                     break;

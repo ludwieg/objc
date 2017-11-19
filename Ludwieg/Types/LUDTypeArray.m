@@ -57,12 +57,12 @@ LUDRepresentsProtocol(LUDProtocolTypeArray)
 
 - (BOOL)decodeValue:(NSData *)buf offset:(int *)offset andError:(NSError *__autoreleasing  _Nonnull *)error {
     const uint64_t payloadSize = [buf readLudwiegSizeWithOffset:offset];
-    uint8_t payload[payloadSize];
     LUDMetaProtocolByte *metaByte = [LUDMetaProtocolByte metaFromByte:[buf readUint8WithOffset:offset]];
     const uint64_t arraySize = [buf readLudwiegSizeWithOffset:offset];
     NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:arraySize];
 
     int internalOffset = 0;
+    uint8_t payload[payloadSize];
     [buf readLength:(int)payloadSize into:payload withOffset:offset];
     NSData *data = [NSData dataWithBytes:payload length:payloadSize];
     while(internalOffset < payloadSize) {

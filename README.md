@@ -8,7 +8,7 @@ This repository yields `Ludwieg.framework`, available through Carthage.
 Add the following to your `Cartfile`:
 
 ```
-github `ludwieg/objc`
+github 'ludwieg/objc'
 ```
 
 And run

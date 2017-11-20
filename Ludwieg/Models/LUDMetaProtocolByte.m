@@ -62,8 +62,8 @@
         case LUDProtocolTypeBool:
             [str appendString:@"Bool"];
             break;
-        case LUDProtocolTypeFloat64:
-            [str appendString:@"Float64"];
+        case LUDProtocolTypeDouble:
+            [str appendString:@"Double"];
             break;
         case LUDProtocolTypeString:
             [str appendString:@"String"];

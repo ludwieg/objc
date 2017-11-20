@@ -59,8 +59,8 @@
 		DA92A7611FB8862900D1E55B /* LUDTypeUint32.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A75F1FB8862900D1E55B /* LUDTypeUint32.m */; };
 		DA92A7641FB887E000D1E55B /* LUDTypeUint64.h in Headers */ = {isa = PBXBuildFile; fileRef = DA92A7621FB887E000D1E55B /* LUDTypeUint64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA92A7651FB887E000D1E55B /* LUDTypeUint64.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A7631FB887E000D1E55B /* LUDTypeUint64.m */; };
-		DA92A7681FB8898F00D1E55B /* LUDTypeFloat64.h in Headers */ = {isa = PBXBuildFile; fileRef = DA92A7661FB8898F00D1E55B /* LUDTypeFloat64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA92A7691FB8898F00D1E55B /* LUDTypeFloat64.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A7671FB8898F00D1E55B /* LUDTypeFloat64.m */; };
+		DA92A7681FB8898F00D1E55B /* LUDTypeDouble.h in Headers */ = {isa = PBXBuildFile; fileRef = DA92A7661FB8898F00D1E55B /* LUDTypeDouble.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA92A7691FB8898F00D1E55B /* LUDTypeDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A7671FB8898F00D1E55B /* LUDTypeDouble.m */; };
 		DA92A76C1FB88AED00D1E55B /* LUDTypeBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = DA92A76A1FB88AED00D1E55B /* LUDTypeBlob.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA92A76D1FB88AED00D1E55B /* LUDTypeBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A76B1FB88AED00D1E55B /* LUDTypeBlob.m */; };
 		DA92A7701FB88D6B00D1E55B /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DA92A76E1FB88D6B00D1E55B /* NSData+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,8 +137,8 @@
 		DA92A75F1FB8862900D1E55B /* LUDTypeUint32.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUDTypeUint32.m; sourceTree = "<group>"; };
 		DA92A7621FB887E000D1E55B /* LUDTypeUint64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUDTypeUint64.h; sourceTree = "<group>"; };
 		DA92A7631FB887E000D1E55B /* LUDTypeUint64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUDTypeUint64.m; sourceTree = "<group>"; };
-		DA92A7661FB8898F00D1E55B /* LUDTypeFloat64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUDTypeFloat64.h; sourceTree = "<group>"; };
-		DA92A7671FB8898F00D1E55B /* LUDTypeFloat64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUDTypeFloat64.m; sourceTree = "<group>"; };
+		DA92A7661FB8898F00D1E55B /* LUDTypeDouble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUDTypeDouble.h; sourceTree = "<group>"; };
+		DA92A7671FB8898F00D1E55B /* LUDTypeDouble.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUDTypeDouble.m; sourceTree = "<group>"; };
 		DA92A76A1FB88AED00D1E55B /* LUDTypeBlob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUDTypeBlob.h; sourceTree = "<group>"; };
 		DA92A76B1FB88AED00D1E55B /* LUDTypeBlob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUDTypeBlob.m; sourceTree = "<group>"; };
 		DA92A76E1FB88D6B00D1E55B /* NSData+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Extensions.h"; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 				DA92A75F1FB8862900D1E55B /* LUDTypeUint32.m */,
 				DA92A7621FB887E000D1E55B /* LUDTypeUint64.h */,
 				DA92A7631FB887E000D1E55B /* LUDTypeUint64.m */,
-				DA92A7661FB8898F00D1E55B /* LUDTypeFloat64.h */,
-				DA92A7671FB8898F00D1E55B /* LUDTypeFloat64.m */,
+				DA92A7661FB8898F00D1E55B /* LUDTypeDouble.h */,
+				DA92A7671FB8898F00D1E55B /* LUDTypeDouble.m */,
 				DA92A76A1FB88AED00D1E55B /* LUDTypeBlob.h */,
 				DA92A76B1FB88AED00D1E55B /* LUDTypeBlob.m */,
 				DA4B8BA51FBA342B00C15A9F /* LUDTypeBool.h */,
@@ -314,7 +314,7 @@
 				DA5FB8D21FBBB4D700E736B0 /* LUDTypeUUID.h in Headers */,
 				DA92A73F1FB7607800D1E55B /* LUDSerializable.h in Headers */,
 				DA92A7741FB8917A00D1E55B /* NSMutableData+Extensions.h in Headers */,
-				DA92A7681FB8898F00D1E55B /* LUDTypeFloat64.h in Headers */,
+				DA92A7681FB8898F00D1E55B /* LUDTypeDouble.h in Headers */,
 				DA5FB8D61FBC751000E736B0 /* LUDTypeUnknown.h in Headers */,
 				DA92A73B1FB75ACB00D1E55B /* LUDMetaProtocolByte.h in Headers */,
 				DA5FB8CE1FBA3B7000E736B0 /* LUDTypeString.h in Headers */,
@@ -448,7 +448,7 @@
 				DA5FB8EB1FBC8B0A00E736B0 /* LUDTypeStruct.m in Sources */,
 				DA5FB8CF1FBA3B7000E736B0 /* LUDTypeString.m in Sources */,
 				DA5FB8D31FBBB4D700E736B0 /* LUDTypeUUID.m in Sources */,
-				DA92A7691FB8898F00D1E55B /* LUDTypeFloat64.m in Sources */,
+				DA92A7691FB8898F00D1E55B /* LUDTypeDouble.m in Sources */,
 				DA5FB8F31FBCA22100E736B0 /* LUDTypeAny.m in Sources */,
 				DA92A7651FB887E000D1E55B /* LUDTypeUint64.m in Sources */,
 				DA92A74C1FB766E100D1E55B /* LUDSerializationCandidate.m in Sources */,

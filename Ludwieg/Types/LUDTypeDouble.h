@@ -1,5 +1,5 @@
 //
-//  LUDTypeFloat64.h
+//  LUDTypeDouble.h
 //  Ludwieg
 //
 //  Created by Victor Gama on 12/11/2017.
@@ -8,7 +8,7 @@
 
 #import "LUDType.h"
 
-@interface LUDTypeFloat64 : LUDType
+@interface LUDTypeDouble : LUDType
 
 @property (nonatomic) double_t value;
 

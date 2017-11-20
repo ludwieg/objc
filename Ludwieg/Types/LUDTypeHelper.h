@@ -22,7 +22,7 @@
 MakeShorthand(uint8_t, LUDTypeUint8, LUDUint8);
 MakeShorthand(uint32_t, LUDTypeUint32, LUDUint32);
 MakeShorthand(uint64_t, LUDTypeUint64, LUDUint64);
-MakeShorthand(double_t, LUDTypeFloat64, LUDFloat64);
+MakeShorthand(double_t, LUDTypeDouble, LUDDouble);
 MakeShorthand(NSData *, LUDTypeBlob, LUDBlob);
 MakeShorthand(BOOL, LUDTypeBool, LUDBool);
 MakeShorthand(NSString *, LUDTypeString, LUDString);

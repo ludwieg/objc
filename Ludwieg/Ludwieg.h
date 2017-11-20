@@ -26,7 +26,7 @@ FOUNDATION_EXPORT const unsigned char LudwiegVersionString[];
 #import <Ludwieg/LUDTypeUint8.h>
 #import <Ludwieg/LUDTypeUint32.h>
 #import <Ludwieg/LUDTypeUint64.h>
-#import <Ludwieg/LUDTypeFloat64.h>
+#import <Ludwieg/LUDTypeDouble.h>
 #import <Ludwieg/LUDTypeBlob.h>
 #import <Ludwieg/LUDTypeBool.h>
 #import <Ludwieg/LUDTypeString.h>

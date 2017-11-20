@@ -24,7 +24,7 @@ static const uint8_t LUDIsEmptyBit = 0x2;
  - LUDProtocolTypeUint8: Represents an Uint8 type
  - LUDProtocolTypeUint32: Represents an Uint32 type
  - LUDProtocolTypeUint64: Represents an Uint64 type
- - LUDProtocolTypeFloat64: Represents a Float64 type
+ - LUDProtocolTypeDouble: Represents a Float64 type
  - LUDProtocolTypeString: Represents a String type
  - LUDProtocolTypeBlob: Represents a Blob type
  - LUDProtocolTypeBool: Represents a Bool type
@@ -39,7 +39,7 @@ typedef NS_ENUM(uint8_t, LUDProtocolType) {
     LUDProtocolTypeUint8 = (0x01 << 2),
     LUDProtocolTypeUint32 = (0x02 << 2),
     LUDProtocolTypeUint64 = (0x03 << 2),
-    LUDProtocolTypeFloat64 = (0x04 << 2),
+    LUDProtocolTypeDouble = (0x04 << 2),
     LUDProtocolTypeString = (0x05 << 2) | 0x1,
     LUDProtocolTypeBlob = (0x06 << 2) | 0x1,
     LUDProtocolTypeBool = (0x07 << 2),
@@ -53,7 +53,7 @@ static const int LUDKnownTypesLength = 12;
 
 static const uint8_t LUDKnownTypes[LUDKnownTypesLength] = {
     LUDProtocolTypeUnknown, LUDProtocolTypeUint8, LUDProtocolTypeUint32,
-    LUDProtocolTypeUint64, LUDProtocolTypeFloat64, LUDProtocolTypeString,
+    LUDProtocolTypeUint64, LUDProtocolTypeDouble, LUDProtocolTypeString,
     LUDProtocolTypeBlob, LUDProtocolTypeBool, LUDProtocolTypeArray,
     LUDProtocolTypeUUID, LUDProtocolTypeAny, LUDProtocolTypeStruct
 };

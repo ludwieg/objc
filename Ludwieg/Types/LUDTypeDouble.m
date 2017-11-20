@@ -1,15 +1,15 @@
 //
-//  LUDTypeFloat64.m
+//  LUDTypeDouble.m
 //  Ludwieg
 //
 //  Created by Victor Gama on 12/11/2017.
 //  Copyright © 2017 Victor Gama. All rights reserved.
 //
 
-#import "LUDTypeFloat64.h"
+#import "LUDTypeDouble.h"
 
-@implementation LUDTypeFloat64
-LUDRepresentsProtocol(LUDProtocolTypeFloat64)
+@implementation LUDTypeDouble
+LUDRepresentsProtocol(LUDProtocolTypeDouble)
 
 - (BOOL)encodeValueTo:(NSMutableData *)buf withCandidate:(LUDSerializationCandidate *)candidate andError:(NSError *__autoreleasing  _Nonnull *)error {
     [buf writeFloat64:self.value];

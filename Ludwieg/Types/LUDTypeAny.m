@@ -93,8 +93,8 @@ LUDRepresentsProtocol(LUDProtocolTypeAny)
         return [LUDTypeUint32 type];
     } else if([type isKindOfClass:[LUDTypeUint64 class]]) {
         return [LUDTypeUint64 type];
-    } else if([type isKindOfClass:[LUDTypeFloat64 class]]) {
-        return [LUDTypeFloat64 type];
+    } else if([type isKindOfClass:[LUDTypeDouble class]]) {
+        return [LUDTypeDouble type];
     } else if([type isKindOfClass:[LUDTypeBlob class]]) {
         return [LUDTypeBlob type];
     } else if([type isKindOfClass:[LUDTypeBool class]]) {

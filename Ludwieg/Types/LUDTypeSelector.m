@@ -28,7 +28,7 @@ struct LUDTypeHandler {
         REGISTER_T(0, LUDTypeUint8);
         REGISTER_T(1, LUDTypeUint32);
         REGISTER_T(2, LUDTypeUint64);
-        REGISTER_T(3, LUDTypeFloat64);
+        REGISTER_T(3, LUDTypeDouble);
         REGISTER_T(4, LUDTypeBlob);
         REGISTER_T(5, LUDTypeBool);
         REGISTER_T(6, LUDTypeString);

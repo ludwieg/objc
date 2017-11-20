@@ -53,7 +53,7 @@
 @property (nullable, nonatomic, retain) LUDTypeUint8 *fieldA;
 @property (nullable, nonatomic, retain) LUDTypeUint32 *fieldB;
 @property (nullable, nonatomic, retain) LUDTypeUint64 *fieldC;
-@property (nullable, nonatomic, retain) LUDTypeFloat64 *fieldD;
+@property (nullable, nonatomic, retain) LUDTypeDouble *fieldD;
 @property (nullable, nonatomic, retain) LUDTypeString *fieldE;
 @property (nullable, nonatomic, retain) LUDTypeBlob *fieldF;
 @property (nullable, nonatomic, retain) LUDTypeBool *fieldG;
@@ -71,7 +71,7 @@
              [LUDTypeAnnotation annotationWithName:@"fieldA" andType:LUDProtocolTypeUint8],
              [LUDTypeAnnotation annotationWithName:@"fieldB" andType:LUDProtocolTypeUint32],
              [LUDTypeAnnotation annotationWithName:@"fieldC" andType:LUDProtocolTypeUint64],
-             [LUDTypeAnnotation annotationWithName:@"fieldD" andType:LUDProtocolTypeFloat64],
+             [LUDTypeAnnotation annotationWithName:@"fieldD" andType:LUDProtocolTypeDouble],
              [LUDTypeAnnotation annotationWithName:@"fieldE" andType:LUDProtocolTypeString],
              [LUDTypeAnnotation annotationWithName:@"fieldF" andType:LUDProtocolTypeBlob],
              [LUDTypeAnnotation annotationWithName:@"fieldG" andType:LUDProtocolTypeBool],
@@ -102,7 +102,7 @@
 @implementation LUDAnyTest
 
 + (NSArray<LUDTypeAnnotation *> *)ludwiegMeta {
-    return @[[LUDTypeAnnotation annotationWithName:@"fieldY" andType:LUDProtocolTypeAny] ];
+    return @[[LUDTypeAnnotation annotationWithName:@"fieldP" andType:LUDProtocolTypeAny] ];
 }
 
 + (uint8_t)ludwiegID { return 0x03; }
@@ -137,7 +137,7 @@
     test.fieldA = LUDUint8(27);
     test.fieldB = LUDUint32(28);
     test.fieldC = LUDUint64(29);
-    test.fieldD = LUDFloat64(30.2);
+    test.fieldD = LUDDouble(30.2);
     test.fieldE = LUDString(@"String");
     uint8_t bytes[3] = { 0x27, 0x24, 0x50 };
     test.fieldF = LUDBlob([NSData dataWithBytes:bytes length:3]);
@@ -197,7 +197,7 @@
         test.fieldA = LUDUint8(27);
         test.fieldB = LUDUint32(28);
         test.fieldC = LUDUint64(29);
-        test.fieldD = LUDFloat64(30.2);
+        test.fieldD = LUDDouble(30.2);
         test.fieldE = LUDString(@"String");
         uint8_t bytes[3] = { 0x27, 0x24, 0x50 };
         test.fieldF = LUDBlob([NSData dataWithBytes:bytes length:3]);

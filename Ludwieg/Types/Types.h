@@ -12,7 +12,7 @@
 #import "LUDTypeUint8.h"
 #import "LUDTypeUint32.h"
 #import "LUDTypeUint64.h"
-#import "LUDTypeFloat64.h"
+#import "LUDTypeDouble.h"
 #import "LUDTypeBlob.h"
 #import "LUDTypeBool.h"
 #import "LUDTypeString.h"

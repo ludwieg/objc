@@ -39,6 +39,7 @@ FOUNDATION_EXPORT const unsigned char LudwiegVersionString[];
 #import <Ludwieg/LUDMessageMeta.h>
 #import <Ludwieg/LUDTypeAnnotation.h>
 #import <Ludwieg/LUDMetaProtocolByte.h>
+#import <Ludwieg/LUDDeserializationStatistics.h>
 
 #pragma mark - Encoder/Decoder
 #import <Ludwieg/LUDSerializer.h>

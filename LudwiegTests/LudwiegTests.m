@@ -246,9 +246,11 @@
 
     LUDDeserializer *d = [LUDDeserializer deserializer];
     LUDMessageMeta *meta;
+    LUDDeserializationStatistics *result;
     id value;
     for(int i = 0; i < 185; i++) {
-        if([d read:expectBytes[i] intoMessageMeta:&meta andTarget:&value]) {
+        if([d read:expectBytes[i] intoMessageMeta:&meta stats:&result andTarget:&value]) {
+            XCTAssert(result.knowsAllFields);
             return;
         }
     }
@@ -269,7 +271,7 @@
     id value;
     LUDMessageMeta *meta;
     for(int i = 0; i < result.length; i++) {
-        if([d read:buf[i] intoMessageMeta:&meta andTarget:&value]) {
+        if([d read:buf[i] intoMessageMeta:&meta stats:nil andTarget:&value]) {
             NSLog(@"%@", value);
             return;
         }

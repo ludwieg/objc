@@ -108,7 +108,7 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
     self->readBytes = 0;
 }
 
-- (BOOL)read:(uint8_t)byte intoMessageMeta:(LUDMessageMeta *__autoreleasing  __nullable *)meta andTarget:(id  _Nullable __autoreleasing *)target {
+- (BOOL)read:(uint8_t)byte intoMessageMeta:(LUDMessageMeta *__autoreleasing  _Nonnull *)meta stats:(LUDDeserializationStatistics *__autoreleasing _Nullable *)stats andTarget:(id  _Nonnull __autoreleasing *)target {
     if(meta != nil && (*meta) == nil) {
         *meta = [[LUDMessageMeta alloc] init];
     }
@@ -158,7 +158,8 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
             }
             switch ((LUDLengthEncoding)byte) {
                 case LUDLengthEncoding0:
-                    return [self handleDeserializationWithTarget:target];
+                    if(stats != nil) *stats = [LUDDeserializationStatistics resultWithReceivedFields:0 andApplied:0];
+                    return [self handleDeserializationWithTarget:target andStats:nil];
                     break;
                 case LUDLengthEncoding8:
                     self->messageSizeBytes = 1;
@@ -206,27 +207,27 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
             [tmpBuffer writeUint8:byte];
             readBytes++;
             if(tmpBuffer.length == self->packageSize) {
-                return [self handleDeserializationWithTarget:target];
+                return [self handleDeserializationWithTarget:target andStats:stats];
             }
         }
     }
     return NO;
 }
 
-- (BOOL)handleDeserializationWithTarget:(id  _Nullable __autoreleasing *)target {
+- (BOOL)handleDeserializationWithTarget:(id  _Nullable __autoreleasing *)target andStats:(LUDDeserializationStatistics *__autoreleasing  _Nonnull *)stats {
     RegisteredPackage p;
     if(!lookupPackage(rawPackageType, &p)) {
         [self reset];
         return NO;
     }
-    if ([self deserializeInto:target usingClass:p.klass]) {
+    if ([self deserializeInto:target usingClass:p.klass andStats:stats]) {
         return NO;
     }
     [self reset];
     return YES;
 }
 
-- (BOOL)deserializeInto:(id __nullable __autoreleasing *)target usingClass:(Class)klass {
+- (BOOL)deserializeInto:(id __nullable __autoreleasing *)target usingClass:(Class)klass andStats:(LUDDeserializationStatistics *__autoreleasing  _Nonnull *)stats {
     int offset = 0;
     const uint64_t size = tmpBuffer.length;
     NSMutableArray *items = [[NSMutableArray alloc] init];
@@ -243,16 +244,19 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
 
     // At this point, everything is fine. Yay.
     // Now comes the hard-ish part: Place all values into correct places.
-    *target = [self fillClass:klass usingValues:items];
+    *target = [self fillClass:klass usingValues:items andStats:stats];
     return NO;
 }
 
 
-- (id)fillClass:(Class)cls usingValues:(NSArray *)arr {
+- (id)fillClass:(Class)cls usingValues:(NSArray *)arr andStats:(LUDDeserializationStatistics *__autoreleasing  _Nonnull *)stats {
     NSArray<LUDTypeAnnotation *> *annotations = [cls ludwiegMeta];
     unsigned int propCount;
     objc_property_t *properties = class_copyPropertyList(cls, &propCount);
     id instance = [[cls alloc] init];
+
+    uint32_t receivedItemsCount = (uint32_t)arr.count;
+    uint32_t knownItemsCount = (uint32_t)annotations.count;
 
     for(int i = 0; i < annotations.count; i++) {
         if(i >= propCount) break; // There's nothing else we can do here.
@@ -280,7 +284,10 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
                 NSLog(@"[LUDDeserializer] Cannot recover class with name %@", typeClass);
                 continue;
             }
-            value = [self fillClass:typeClass usingValues:((LUDTypeStruct *)value).deserializedValues];
+            LUDDeserializationStatistics *res;
+            value = [self fillClass:typeClass usingValues:((LUDTypeStruct *)value).deserializedValues andStats:&res];
+            knownItemsCount += res.appliedFields;
+            receivedItemsCount += res.receivedFields;
         } else if([value isKindOfClass:[LUDTypeArray class]]) {
             if(annotation.arrayType == LUDProtocolTypeStruct) {
                 // Here we want to pay extra attention to the array, since
@@ -288,8 +295,11 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
                 Class targetClass = annotation.userType;
                 LUDTypeArray *currentArray = (LUDTypeArray *)value;
                 NSMutableArray *newArray = [[NSMutableArray alloc] initWithCapacity:currentArray.value.count];
+                LUDDeserializationStatistics *res;
                 for(LUDTypeStruct *s in currentArray.value) {
-                    [newArray addObject:[self fillClass:targetClass usingValues:s.deserializedValues]];
+                    [newArray addObject:[self fillClass:targetClass usingValues:s.deserializedValues andStats:&res]];
+                    knownItemsCount += res.appliedFields;
+                    receivedItemsCount += res.receivedFields;
                 }
                 value = newArray;
             } else {
@@ -299,6 +309,8 @@ static BOOL lookupPackage(uint8_t identifier, RegisteredPackage *p) {
 
         [instance setValue:value forKey:propName];
     }
+
+    if(stats != nil) *stats = [LUDDeserializationStatistics resultWithReceivedFields:receivedItemsCount andApplied:knownItemsCount];
     return instance;
 }
 

@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, LUDError) {
     LUDErrorInvalidArrayType = 40,
     LUDErrorInvalidArraySize = 50,
     LUDErrorInvalidTypeForAny = 60,
+    LudErrorCannotEncodeInvalidDynInt = 70,
 };
 
 @interface LUDErrorDomain : NSObject

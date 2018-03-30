@@ -86,6 +86,9 @@
         case LUDProtocolTypeUUID:
             [str appendString:@"UUID"];
             break;
+        case LUDProtocolTypeDynInt:
+            [str appendString:@"DynInt"];
+            break;
     }
 
     if(self->_isLengthPrefixed) {

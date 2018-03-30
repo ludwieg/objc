@@ -21,6 +21,7 @@
 #import "LUDTypeStruct.h"
 #import "LUDTypeArray.h"
 #import "LUDTypeAny.h"
+#import "LUDTypeDynInt.h"
 
 
 #endif /* Types_h */

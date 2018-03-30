@@ -67,6 +67,8 @@
 		DA92A7711FB88D6B00D1E55B /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A76F1FB88D6B00D1E55B /* NSData+Extensions.m */; };
 		DA92A7741FB8917A00D1E55B /* NSMutableData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DA92A7721FB8917A00D1E55B /* NSMutableData+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA92A7751FB8917A00D1E55B /* NSMutableData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A7731FB8917A00D1E55B /* NSMutableData+Extensions.m */; };
+		DAF94FAB206DD8FF007E440C /* LUDTypeDynInt.h in Headers */ = {isa = PBXBuildFile; fileRef = DAF94FA9206DD8FF007E440C /* LUDTypeDynInt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAF94FAC206DD8FF007E440C /* LUDTypeDynInt.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF94FAA206DD8FF007E440C /* LUDTypeDynInt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		DA92A76F1FB88D6B00D1E55B /* NSData+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Extensions.m"; sourceTree = "<group>"; };
 		DA92A7721FB8917A00D1E55B /* NSMutableData+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+Extensions.h"; sourceTree = "<group>"; };
 		DA92A7731FB8917A00D1E55B /* NSMutableData+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+Extensions.m"; sourceTree = "<group>"; };
+		DAF94FA9206DD8FF007E440C /* LUDTypeDynInt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUDTypeDynInt.h; sourceTree = "<group>"; };
+		DAF94FAA206DD8FF007E440C /* LUDTypeDynInt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUDTypeDynInt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +271,8 @@
 				DA5FB8F11FBCA22100E736B0 /* LUDTypeAny.m */,
 				DA5FB8F41FBCA53600E736B0 /* LUDTypeArray.h */,
 				DA5FB8F51FBCA53600E736B0 /* LUDTypeArray.m */,
+				DAF94FA9206DD8FF007E440C /* LUDTypeDynInt.h */,
+				DAF94FAA206DD8FF007E440C /* LUDTypeDynInt.m */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 			files = (
 				DA92A7701FB88D6B00D1E55B /* NSData+Extensions.h in Headers */,
 				DA5FB8FA1FBCC61B00E736B0 /* LUDDeserializer.h in Headers */,
+				DAF94FAB206DD8FF007E440C /* LUDTypeDynInt.h in Headers */,
 				DA92A7541FB76F3300D1E55B /* LUDOffsetHelper.h in Headers */,
 				DA92A7601FB8862900D1E55B /* LUDTypeUint32.h in Headers */,
 				DA5FB8F61FBCA53600E736B0 /* LUDTypeArray.h in Headers */,
@@ -449,6 +456,7 @@
 				DA5FB8CF1FBA3B7000E736B0 /* LUDTypeString.m in Sources */,
 				DA5FB8D31FBBB4D700E736B0 /* LUDTypeUUID.m in Sources */,
 				DA92A7691FB8898F00D1E55B /* LUDTypeDouble.m in Sources */,
+				DAF94FAC206DD8FF007E440C /* LUDTypeDynInt.m in Sources */,
 				DA5FB8F31FBCA22100E736B0 /* LUDTypeAny.m in Sources */,
 				DA92A7651FB887E000D1E55B /* LUDTypeUint64.m in Sources */,
 				DA92A74C1FB766E100D1E55B /* LUDSerializationCandidate.m in Sources */,

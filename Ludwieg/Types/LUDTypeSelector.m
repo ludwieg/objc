@@ -22,7 +22,7 @@ struct LUDTypeHandler {
 
 + (nullable Class)typeForByte:(uint8_t)byte {
     static dispatch_once_t onceToken;
-    static const int handlersCount = 12;
+    static const int handlersCount = 13;
     static struct LUDTypeHandler handlers[handlersCount];
     dispatch_once(&onceToken, ^{
         REGISTER_T(0, LUDTypeUint8);
@@ -37,6 +37,7 @@ struct LUDTypeHandler {
         REGISTER_T(9, LUDTypeStruct);
         REGISTER_T(10, LUDTypeArray);
         REGISTER_T(11, LUDTypeAny);
+        REGISTER_T(12, LUDTypeDynInt);
     });
     for(int i = 0; i < handlersCount; i++) {
         if(handlers[i].identifier == byte) {

@@ -21,7 +21,6 @@ FOUNDATION_EXPORT const unsigned char LudwiegVersionString[];
 #pragma mark - Types
 #import <Ludwieg/LudTypes.h>
 #import <Ludwieg/LUDType.h>
-#import <Ludwieg/LUDTypeHelper.h>
 
 #import <Ludwieg/LUDTypeUint8.h>
 #import <Ludwieg/LUDTypeUint32.h>
@@ -32,6 +31,9 @@ FOUNDATION_EXPORT const unsigned char LudwiegVersionString[];
 #import <Ludwieg/LUDTypeString.h>
 #import <Ludwieg/LUDTypeUUID.h>
 #import <Ludwieg/LUDTypeUnknown.h>
+#import <Ludwieg/LUDTypeDynInt.h>
+
+#import <Ludwieg/LUDTypeHelper.h>
 
 #pragma mark - Models
 #import <Ludwieg/LUDMessageMeta.h>

@@ -47,15 +47,17 @@ typedef NS_ENUM(uint8_t, LUDProtocolType) {
     LUDProtocolTypeUUID = (0x09 << 2),
     LUDProtocolTypeAny = (0x0A << 2) | 0x1,
     LUDProtocolTypeStruct = (0x0B << 2) | 0x1,
+    LUDProtocolTypeDynInt = (0x0C << 2),
 };
 
-static const int LUDKnownTypesLength = 12;
+static const int LUDKnownTypesLength = 13;
 
 static const uint8_t LUDKnownTypes[LUDKnownTypesLength] = {
     LUDProtocolTypeUnknown, LUDProtocolTypeUint8, LUDProtocolTypeUint32,
     LUDProtocolTypeUint64, LUDProtocolTypeDouble, LUDProtocolTypeString,
     LUDProtocolTypeBlob, LUDProtocolTypeBool, LUDProtocolTypeArray,
-    LUDProtocolTypeUUID, LUDProtocolTypeAny, LUDProtocolTypeStruct
+    LUDProtocolTypeUUID, LUDProtocolTypeAny, LUDProtocolTypeStruct,
+    LUDProtocolTypeDynInt,
 };
 
 typedef NS_ENUM(uint8_t, LUDLengthEncoding) {

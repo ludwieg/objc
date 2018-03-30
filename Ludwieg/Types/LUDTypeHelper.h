@@ -19,6 +19,10 @@
     return ret; \
 }
 
+#define MakeDynShorthand(native_type, lud_type, name) NS_INLINE lud_type *name(native_type v) { \
+    return [lud_type dynIntWithAny:v]; \
+}
+
 MakeShorthand(uint8_t, LUDTypeUint8, LUDUint8);
 MakeShorthand(uint32_t, LUDTypeUint32, LUDUint32);
 MakeShorthand(uint64_t, LUDTypeUint64, LUDUint64);
@@ -28,5 +32,6 @@ MakeShorthand(BOOL, LUDTypeBool, LUDBool);
 MakeShorthand(NSString *, LUDTypeString, LUDString);
 MakeShorthand(NSString *, LUDTypeUUID, LUDUUID);
 MakeShorthand(id, LUDTypeAny, LUDAny);
+MakeDynShorthand(double_t, LUDTypeDynInt, LUDDynInt);
 
 #endif /* LUDTypeHelper_h */
